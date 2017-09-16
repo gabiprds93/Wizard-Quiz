@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Wizard Quiz</title>
+        <!--zoom desde mobile-->
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!--CSS-->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header id="cabecera">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1 col-sm-1 col-xs-1 btn">
+                        <img class="img-responsive" src="img/flecha-izq.png" alt="">
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 btn">
+                        <img class="img-responsive" src="img/flecha-der.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="secImagen">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <img class="img-responsive" src="" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="secProgreso">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1 col-sm-1 col-xs-1">
+                        <label id="progreso"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                            0%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="secPreguntas">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h1 id="pregunta"></h1>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <button class="btn" id="opcion1"></button>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <button class="btn" id="opcion2"></button>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <button class="btn" id="opcion3"></button>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-1 col-sm-4 col-xs-4 btn">
+                        <img src="img/Facebook-icon.png" alt="">
+                    </div>
+                    <div class="col-md-1 col-sm-4 col-xs-4 btn">
+                        <img src="img/Googleplus-icon.png" alt="">
+                    </div>
+                    <div class="col-md-1 col-sm-4 col-xs-4 btn">
+                        <img src="img/Twitter-icon.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+           <div class="container">
+               <div class="row text-center">
+                   <div class="col-md-12 col-sm-12 col-xs-12">
+                       <p>Copyright 2017</p>
+                   </div>
+               </div>
+           </div>
+        </footer>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- Tu Archivo main.js -->
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
