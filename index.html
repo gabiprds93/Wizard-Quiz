@@ -14,10 +14,10 @@
         <header id="cabecera">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-1 col-sm-1 col-xs-1 btn">
+                    <div class="col-md-1 col-sm-1 col-xs-1 btn" id="anterior">
                         <img class="img-responsive" src="img/flecha-izq.png" alt="">
                     </div>
-                    <div class="col-md-1 col-sm-1 col-xs-1 btn">
+                    <div class="col-md-1 col-sm-1 col-xs-1 btn" id="siguiente">
                         <img class="img-responsive" src="img/flecha-der.png" alt="">
                     </div>
                 </div>
@@ -35,7 +35,7 @@
         <section id="secProgreso">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-1 col-sm-1 col-xs-1">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <label id="progreso"></label>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             </div>
         </section>
         <section id="secPreguntas">
-            <div class="container">
+            <div class="container" id="contenedorPreguntas">
                 <div class="row text-center">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1 id="pregunta"></h1>
@@ -60,13 +60,13 @@
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <button class="btn" id="opcion1"></button>
+                        <label class="btn btn-default" id="opcion1"></label>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <button class="btn" id="opcion2"></button>
+                        <label class="btn" id="opcion2"></label>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <button class="btn" id="opcion3"></button>
+                        <label class="btn" id="opcion3"></label>
                     </div>
                 </div>
                 <div class="row text-center">
@@ -78,6 +78,23 @@
                     </div>
                     <div class="col-md-1 col-sm-4 col-xs-4 btn">
                         <img src="img/Twitter-icon.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="container oculto" id="contenedorRespuestas">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h1 id="titulo">Aqui estan tus respuestas:</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="respuestas">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="btn btn-primary" id="btnEnviar">Enviar</div>
+                        <div class="btn btn-primary oculto" id="btnComenzar">Comenzar de nuevo</div>
                     </div>
                 </div>
             </div>
