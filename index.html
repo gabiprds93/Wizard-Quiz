@@ -14,20 +14,20 @@
         <header id="cabecera">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-1 col-sm-1 col-xs-1 btn" id="anterior">
-                        <img class="img-responsive" src="img/flecha-izq.png" alt="">
+                    <div class="col-md-1 col-sm-1 col-xs-2 col-md-offset-10 col-sm-offset-9 col-xs-offset-5">
+                        <img class="btn oculto" id="anterior" src="img/flecha-izq.png" alt="">
                     </div>
-                    <div class="col-md-1 col-sm-1 col-xs-1 btn" id="siguiente">
-                        <img class="img-responsive" src="img/flecha-der.png" alt="">
+                    <div class="col-md-1 col-sm-1 col-xs-2 disabled">
+                        <img class="btn oculto" id="siguiente" src="img/flecha-der.png" alt="">
                     </div>
                 </div>
             </div>
         </header>
         <section id="secImagen">
             <div class="container">
-                <div class="row text-center">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <img class="img-responsive" src="" alt="">
+                <div class="row">
+                    <div class="col-md-4 col-sm-8 col-xs-12 col-md-offset-4 col-sm-offset-2 col-xs-offset-0 text-center">
+                        <img class="img-responsive" id="imagen" alt="">
                     </div>
                 </div>
             </div>
@@ -42,9 +42,9 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            <div class="progress-bar progress-bar-striped active" id="barra" role="progressbar"
                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                            0%
+                            
                             </div>
                         </div>
                     </div>
@@ -63,35 +63,31 @@
                         <label class="btn btn-default" id="opcion1"></label>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <label class="btn" id="opcion2"></label>
+                        <label class="btn btn-default" id="opcion2"></label>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <label class="btn" id="opcion3"></label>
+                        <label class="btn btn-default" id="opcion3"></label>
                     </div>
                 </div>
-                <div class="row text-center">
-                    <div class="col-md-1 col-sm-4 col-xs-4 btn">
-                        <img src="img/Facebook-icon.png" alt="">
-                    </div>
-                    <div class="col-md-1 col-sm-4 col-xs-4 btn">
-                        <img src="img/Googleplus-icon.png" alt="">
-                    </div>
-                    <div class="col-md-1 col-sm-4 col-xs-4 btn">
-                        <img src="img/Twitter-icon.png" alt="">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-10 col-md-offset-5 col-xs-offset-2">
+                        <img class="btn" src="img/Facebook-icon.png" alt="">
+                        <img class="btn" src="img/Googleplus-icon.png" alt="">
+                        <img class="btn" src="img/Twitter-icon.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="container oculto" id="contenedorRespuestas">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                         <h1 id="titulo">Aqui estan tus respuestas:</h1>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-md-12 col-sm-12 col-xs-12" id="respuestas">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="btn btn-primary" id="btnEnviar">Enviar</div>
                         <div class="btn btn-primary oculto" id="btnComenzar">Comenzar de nuevo</div>
@@ -99,11 +95,20 @@
                 </div>
             </div>
         </section>
+        <section id="fondo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <img class="img-responsive" src="img/cinema.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
         <footer>
            <div class="container">
-               <div class="row text-center">
-                   <div class="col-md-12 col-sm-12 col-xs-12">
-                       <p>Copyright 2017</p>
+               <div class="row">
+                   <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                       <label class="">Copyright 2017</label>
                    </div>
                </div>
            </div>

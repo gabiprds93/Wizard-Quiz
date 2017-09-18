@@ -5,45 +5,46 @@ const aplicacion =
     {
         pregunta0:
         {
-            pregunta: "Cual es la aerolinea mas antigua del mundo?",
-            opcion1: "Avianca",
-            opcion2: "KLM",
-            opcion3: "Qantas",
-            respuesta: "KLM",
+            pregunta: "¿De qué película es esta imagen?",
+            opcion1: "Aladino",
+            opcion2: "El Rey León",
+            opcion3: "La Sirenita",
+            respuesta: "Aladino",
         },
         pregunta1:
         {
-            pregunta: "Cual es el el puerto mas largo del mundo?",
-            opcion1: "Sangai",
-            opcion2: "Singapor",
-            opcion3: "Rotterdam",
-            respuesta: "Sangai",
+            pregunta: "¿Te suena familiar?",
+            opcion1: "Pinocho",
+            opcion2: "Frozen",
+            opcion3: "La Bella Durmiente",
+            respuesta: "Frozen",
         },
         pregunta2:
         {
-            pregunta: "Cual es la distancia mas larga de ciclismo?",
-            opcion1: "89km",
-            opcion2: "657km",
-            opcion3: "337km",
-            respuesta: "337km",
+            pregunta: "¿Recuerdas esta?",
+            opcion1: "Enredados",
+            opcion2: "Fantasía",
+            opcion3: "Mulán",
+            respuesta: "Mulán",
         },
         pregunta3:
         {
-            pregunta: "Cual es la velociadad maxima de un autobus escolar?",
-            opcion1: "590km/h",
-            opcion2: "320km/h",
-            opcion3: "245km/h",
-            respuesta: "590km/h",
+            pregunta: "¿Sabes cuál es esta película?",
+            opcion1: "Buscando a Nemo",
+            opcion2: "Toy Story",
+            opcion3: "Enredados",
+            respuesta: "Toy Story",
         },
         pregunta4:
         {
-            pregunta: "Cual es el viaje mas largo en un carro a gas?",
-            opcion1: "2617km",
-            opcion2: "3568km",
-            opcion3: "1732km",
-            respuesta: "2617km",
+            pregunta: "¿Y esta?",
+            opcion1: "Aladino",
+            opcion2: "El Rey León",
+            opcion3: "La Sirenita",
+            respuesta: "El Rey León",
         },
     },
+    arregloImagenes: undefined,
     total: undefined,
     contador: undefined,
     contCorrectas: undefined,
@@ -56,10 +57,13 @@ const aplicacion =
     progreso: undefined,
     fechaAnterior: undefined,
     flechaSiguiente: undefined,
+    imagen: undefined,
     btnEnviar: undefined,
     btnComenzar: undefined,
+    barra: undefined,
     iniciar: function()
     {
+        aplicacion.arregloImagenes = ["img/aladino.jpg", "img/frozen.jpg", "img/mulan.jpg", "img/toystory.jpg", "img/elreyleon.jpg", "img/final.gif"];
         aplicacion.total = Object.keys(aplicacion.preguntas).length;
         aplicacion.contador = 0;
         aplicacion.contCorrectas = 0;
@@ -72,8 +76,10 @@ const aplicacion =
         aplicacion.progreso = $("#progreso");
         aplicacion.fechaAnterior = $("#anterior");
         aplicacion.flechaSiguiente = $("#siguiente");
+        aplicacion.imagen = $("#imagen");
         aplicacion.btnEnviar = $("#btnEnviar");
         aplicacion.btnComenzar = $("#btnComenzar");
+        aplicacion.barra = $("#barra");
         aplicacion.establecer();
         aplicacion.mostrar();
     },
@@ -85,18 +91,20 @@ const aplicacion =
         aplicacion.fechaAnterior.click(aplicacion.anterior);
         aplicacion.flechaSiguiente.click(aplicacion.siguiente);
         aplicacion.btnEnviar.click(aplicacion.comprobar);
-        aplicacion.btnComenzar.click(aplicacion.comenzar);
+        aplicacion.btnComenzar.click(aplicacion.reiniciar);
 
     },
     mostrar: function()
     {
-        aplicacion.progreso.text(`${aplicacion.contador} de ${aplicacion.total} respondidas`);
+       aplicacion.imagen.attr("src", aplicacion.arregloImagenes[aplicacion.contador]); aplicacion.progreso.text(`${aplicacion.contador} de ${aplicacion.total} respondidas`);
+        aplicacion.barra.attr("aria-valuenow", aplicacion.contador*20);
+            aplicacion.barra.css("width", `${aplicacion.contador*20}%`);
         if(aplicacion.contador != aplicacion.total)
         {
-           aplicacion.h1Pregunta.html(aplicacion.preguntas[`pregunta${aplicacion.contador}`].pregunta);
-        aplicacion.btnOpcion1.html(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion1);
-        aplicacion.btnOpcion2.html(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion2);
-        aplicacion.btnOpcion3.html(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion3);
+            aplicacion.h1Pregunta.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].pregunta);
+        aplicacion.btnOpcion1.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion1);
+        aplicacion.btnOpcion2.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion2);
+        aplicacion.btnOpcion3.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion3);
         }
         else
         {
@@ -118,15 +126,19 @@ const aplicacion =
     {
         aplicacion.contador++;
         aplicacion.mostrar();
+        aplicacion.fechaAnterior.removeClass("oculto");
+        aplicacion.flechaSiguiente.removeClass("oculto");
     },
     anterior: function()
     {
         aplicacion.contador--;
         aplicacion.mostrar();
+        aplicacion.flechaSiguiente.removeClass("disabled");
     },
     crearLista: function()
     {
         let respuestas = $("#respuestas");
+        respuestas.empty();
         let num = 0;
         for(let i in aplicacion.preguntas)
         {
@@ -164,13 +176,18 @@ const aplicacion =
         aplicacion.btnEnviar.toggleClass("oculto");
         aplicacion.btnComenzar.toggleClass("oculto");
     },
-    comenzar: function()
+    reiniciar: function()
     {
+        aplicacion.contador = 0;
+        aplicacion.contCorrectas = 0;
+        aplicacion.incorrectas = [];
         aplicacion.iniciar();
+        aplicacion.arregloRespuestas = new Array(aplicacion.total);
         let contenedorPreguntas = $("#contenedorPreguntas");
             contenedorPreguntas.toggleClass("oculto");
             let contenedorRespuestas = $("#contenedorRespuestas");
             contenedorRespuestas.toggleClass("oculto");
+        aplicacion.mostrar();
     },
 }
 
