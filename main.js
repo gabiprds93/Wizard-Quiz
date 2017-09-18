@@ -126,8 +126,8 @@ const aplicacion =
     {
         aplicacion.contador++;
         aplicacion.mostrar();
-        aplicacion.fechaAnterior.removeClass("oculto");
-        aplicacion.flechaSiguiente.removeClass("oculto");
+        aplicacion.fechaAnterior.removeClass("invisible");
+        aplicacion.flechaSiguiente.removeClass("invisible");
     },
     anterior: function()
     {
@@ -143,7 +143,7 @@ const aplicacion =
         for(let i in aplicacion.preguntas)
         {
             num++;
-            let parrafo = $('<p/>');
+            let parrafo = $('<h4/>');
             parrafo.text(`${num}. ${aplicacion.preguntas[i].pregunta} ${aplicacion.arregloRespuestas[num-1]}`);
             respuestas.append(parrafo);
         }
@@ -153,6 +153,8 @@ const aplicacion =
         let cont = 0;
         let titulo = $("#titulo");
         let respuestas = $("#respuestas");
+        let secProgreso = $("#secProgreso");
+        secProgreso.addClass("oculto");
         for(let i in aplicacion.preguntas)
         {
             if(aplicacion.arregloRespuestas[cont] == aplicacion.preguntas[i].respuesta)
@@ -170,7 +172,8 @@ const aplicacion =
         titulo.text(`${aplicacion.contCorrectas} de ${aplicacion.total} correctas!`);
         for(let i in aplicacion.incorrectas)
         {
-            respuestas.children("p")[aplicacion.incorrectas[i]].textContent += ` ${aplicacion.preguntas[`pregunta${aplicacion.incorrectas[i]}`].respuesta}`; 
+            respuestas.children("h4")[aplicacion.incorrectas[i]].innerHTML += `<strong> ${aplicacion.preguntas[`pregunta${aplicacion.incorrectas[i]}`].respuesta}</strong>`; 
+            respuestas.children("h4")[aplicacion.incorrectas[i]].style = "color: red";
             //console.log(respuestas.children("p")[aplicacion.incorrectas[i]].textContent)            
         }
         aplicacion.btnEnviar.toggleClass("oculto");
