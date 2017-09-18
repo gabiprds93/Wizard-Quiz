@@ -29,7 +29,7 @@ body
 }
 #secImagen
 {
-    margin: 20px;
+    margin: 10px;
     /background-color: white;
     /position: relative;
     /min-height: 90px;
@@ -49,17 +49,26 @@ body
 }
 #secProgreso
 {
-    margin: 20px;
+    /margin: 10px;
 }
 #secPreguntas
 {
-    margin: 20px;
+    /margin-bottom: 1px;
     /background-color: white;
     /z-index: 10;
 }
+#contenedorPreguntas
+{
+    /padding-bottom: 1px;
+}
 #opcion1, #opcion2, #opcion3
 {
-margin: 10px;
+    /margin: 20px;
+    font-size: 20px;
+}
+.opciones
+{
+    margin-bottom: 20px;
 }
 #fondo
 {
@@ -73,7 +82,7 @@ footer
 {
     /outline: 1px solid black;
     margin-top: 20px;
-    position: absolute;
+    /position: absolute;
     bottom: 0px;
     left: 0;
     width: 100%
