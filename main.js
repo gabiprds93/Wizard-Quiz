@@ -55,12 +55,13 @@ const aplicacion =
     btnOpcion3: undefined,
     arregloRespuestas: undefined,
     progreso: undefined,
-    fechaAnterior: undefined,
+    flechaAnterior: undefined,
     flechaSiguiente: undefined,
     imagen: undefined,
     btnEnviar: undefined,
     btnComenzar: undefined,
     barra: undefined,
+    secProgreso: undefined,
     iniciar: function()
     {
         aplicacion.arregloImagenes = ["img/aladino.jpg", "img/frozen.jpg", "img/mulan.jpg", "img/toystory.jpg", "img/elreyleon.jpg", "img/final.gif"];
@@ -74,12 +75,13 @@ const aplicacion =
         aplicacion.btnOpcion3 = $("#opcion3");
         aplicacion.arregloRespuestas = new Array(aplicacion.total);
         aplicacion.progreso = $("#progreso");
-        aplicacion.fechaAnterior = $("#anterior");
+        aplicacion.flechaAnterior = $("#anterior");
         aplicacion.flechaSiguiente = $("#siguiente");
         aplicacion.imagen = $("#imagen");
         aplicacion.btnEnviar = $("#btnEnviar");
         aplicacion.btnComenzar = $("#btnComenzar");
         aplicacion.barra = $("#barra");
+        aplicacion.secProgreso = $("#secProgreso");
         aplicacion.establecer();
         aplicacion.mostrar();
     },
@@ -88,7 +90,7 @@ const aplicacion =
         aplicacion.btnOpcion1.click(aplicacion.guardarRespuestas);
         aplicacion.btnOpcion2.click(aplicacion.guardarRespuestas);
         aplicacion.btnOpcion3.click(aplicacion.guardarRespuestas);
-        aplicacion.fechaAnterior.click(aplicacion.anterior);
+        aplicacion.flechaAnterior.click(aplicacion.anterior);
         aplicacion.flechaSiguiente.click(aplicacion.siguiente);
         aplicacion.btnEnviar.click(aplicacion.comprobar);
         aplicacion.btnComenzar.click(aplicacion.reiniciar);
@@ -103,35 +105,60 @@ const aplicacion =
         {
             aplicacion.h1Pregunta.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].pregunta);
         aplicacion.btnOpcion1.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion1);
+            //aplicacion.btnOpcion1.css("color", "black");
         aplicacion.btnOpcion2.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion2);
         aplicacion.btnOpcion3.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion3);
         }
-        else
+        else if(aplicacion.contador == aplicacion.total)
         {
             let contenedorPreguntas = $("#contenedorPreguntas");
-            contenedorPreguntas.toggleClass("oculto");
+            contenedorPreguntas.addClass("oculto");
             let contenedorRespuestas = $("#contenedorRespuestas");
-            contenedorRespuestas.toggleClass("oculto");
+            contenedorRespuestas.removeClass("oculto");
             aplicacion.crearLista();
+            //aplicacion.flechaSiguiente.addClass("disabled");
         }
         
     },
     guardarRespuestas: function()
     {
         aplicacion.arregloRespuestas[aplicacion.contador] = $(this).text();
+        //$(this).css("color", "red");
         console.log($(this).text());
         aplicacion.siguiente();
     },
     siguiente: function()
     {
-        aplicacion.contador++;
+        if(aplicacion.contador >= 0 && aplicacion.contador <= aplicacion.total-1)
+        {
+            aplicacion.contador++;
+        }
+        if(aplicacion.arregloRespuestas[aplicacion.contador] == undefined)
+        {
+            aplicacion.flechaSiguiente.addClass("disabled");
+            aplicacion.flechaSiguiente.unbind('click');
+        }
+        else
+        {
+            //aplicacion.flechaSiguiente.click(aplicacion.siguiente);
+        }
+        
         aplicacion.mostrar();
-        aplicacion.fechaAnterior.removeClass("invisible");
+        aplicacion.flechaAnterior.removeClass("invisible");
         aplicacion.flechaSiguiente.removeClass("invisible");
+        aplicacion.flechaAnterior.removeClass("disabled");
     },
     anterior: function()
     {
-        aplicacion.contador--;
+        if(aplicacion.contador >= 1 && aplicacion.contador <= 5)
+        {
+            aplicacion.contador--;
+            aplicacion.flechaSiguiente.click(aplicacion.siguiente);
+        }
+        if(aplicacion.contador == 0)
+        {
+            aplicacion.flechaAnterior.addClass("disabled");
+        }
         aplicacion.mostrar();
         aplicacion.flechaSiguiente.removeClass("disabled");
     },
@@ -153,8 +180,9 @@ const aplicacion =
         let cont = 0;
         let titulo = $("#titulo");
         let respuestas = $("#respuestas");
-        let secProgreso = $("#secProgreso");
-        secProgreso.addClass("oculto");
+        aplicacion.secProgreso.addClass("oculto");
+        aplicacion.flechaAnterior.addClass("oculto");
+        aplicacion.flechaSiguiente.addClass("oculto");
         for(let i in aplicacion.preguntas)
         {
             if(aplicacion.arregloRespuestas[cont] == aplicacion.preguntas[i].respuesta)
@@ -187,10 +215,15 @@ const aplicacion =
         aplicacion.iniciar();
         aplicacion.arregloRespuestas = new Array(aplicacion.total);
         let contenedorPreguntas = $("#contenedorPreguntas");
-            contenedorPreguntas.toggleClass("oculto");
+            contenedorPreguntas.removeClass("oculto");
             let contenedorRespuestas = $("#contenedorRespuestas");
-            contenedorRespuestas.toggleClass("oculto");
+            contenedorRespuestas.addClass("oculto");
         aplicacion.mostrar();
+        aplicacion.secProgreso.removeClass("oculto");
+        aplicacion.flechaAnterior.removeClass("oculto");
+        aplicacion.flechaSiguiente.removeClass("oculto");
+        aplicacion.flechaAnterior.addClass("invisible");
+        aplicacion.flechaSiguiente.addClass("invisible");
     },
 }
 
