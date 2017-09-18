@@ -98,6 +98,8 @@ const aplicacion =
     },
     mostrar: function()
     {
+        let contenedorPreguntas = $("#contenedorPreguntas");
+        let contenedorRespuestas = $("#contenedorRespuestas");
        aplicacion.imagen.attr("src", aplicacion.arregloImagenes[aplicacion.contador]); aplicacion.progreso.text(`${aplicacion.contador} de ${aplicacion.total} respondidas`);
         aplicacion.barra.attr("aria-valuenow", aplicacion.contador*20);
             aplicacion.barra.css("width", `${aplicacion.contador*20}%`);
@@ -108,12 +110,12 @@ const aplicacion =
             //aplicacion.btnOpcion1.css("color", "black");
         aplicacion.btnOpcion2.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion2);
         aplicacion.btnOpcion3.text(aplicacion.preguntas[`pregunta${aplicacion.contador}`].opcion3);
+            contenedorPreguntas.removeClass("oculto");
+            contenedorRespuestas.addClass("oculto");
         }
         else if(aplicacion.contador == aplicacion.total)
         {
-            let contenedorPreguntas = $("#contenedorPreguntas");
             contenedorPreguntas.addClass("oculto");
-            let contenedorRespuestas = $("#contenedorRespuestas");
             contenedorRespuestas.removeClass("oculto");
             aplicacion.crearLista();
             //aplicacion.flechaSiguiente.addClass("disabled");
