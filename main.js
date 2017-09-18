@@ -62,6 +62,7 @@ const aplicacion =
     btnComenzar: undefined,
     barra: undefined,
     secProgreso: undefined,
+    titulo: undefined,
     iniciar: function()
     {
         aplicacion.arregloImagenes = ["img/aladino.jpg", "img/frozen.jpg", "img/mulan.jpg", "img/toystory.jpg", "img/elreyleon.jpg", "img/final.gif"];
@@ -82,6 +83,7 @@ const aplicacion =
         aplicacion.btnComenzar = $("#btnComenzar");
         aplicacion.barra = $("#barra");
         aplicacion.secProgreso = $("#secProgreso");
+        aplicacion.titulo = $("#titulo");
         aplicacion.establecer();
         aplicacion.mostrar();
     },
@@ -180,7 +182,6 @@ const aplicacion =
     comprobar: function()
     {
         let cont = 0;
-        let titulo = $("#titulo");
         let respuestas = $("#respuestas");
         aplicacion.secProgreso.addClass("oculto");
         aplicacion.flechaAnterior.addClass("oculto");
@@ -199,7 +200,7 @@ const aplicacion =
             cont++;
         }
         //console.log(aplicacion.incorrectas);
-        titulo.text(`${aplicacion.contCorrectas} de ${aplicacion.total} correctas!`);
+        aplicacion.titulo.text(`${aplicacion.contCorrectas} de ${aplicacion.total} correctas!`);
         for(let i in aplicacion.incorrectas)
         {
             respuestas.children("h4")[aplicacion.incorrectas[i]].innerHTML += `<strong> ${aplicacion.preguntas[`pregunta${aplicacion.incorrectas[i]}`].respuesta}</strong>`; 
@@ -214,7 +215,7 @@ const aplicacion =
         aplicacion.contador = 0;
         aplicacion.contCorrectas = 0;
         aplicacion.incorrectas = [];
-        aplicacion.iniciar();
+        //aplicacion.iniciar();
         aplicacion.arregloRespuestas = new Array(aplicacion.total);
         let contenedorPreguntas = $("#contenedorPreguntas");
             contenedorPreguntas.removeClass("oculto");
@@ -226,6 +227,9 @@ const aplicacion =
         aplicacion.flechaSiguiente.removeClass("oculto");
         aplicacion.flechaAnterior.addClass("invisible");
         aplicacion.flechaSiguiente.addClass("invisible");
+        aplicacion.btnEnviar.toggleClass("oculto");
+        aplicacion.btnComenzar.toggleClass("oculto");
+        aplicacion.titulo.text("Aqui estan tus respuestas:")
     },
 }
 
